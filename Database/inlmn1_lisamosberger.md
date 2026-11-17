@@ -25,3 +25,39 @@ is different.
 - The lab is kept separate from the lesson material. In intellij I use port 3306 for 
 - the lessons and port 3307 for the lab
 
+### Task 2: Show tables and describe
+I wrote these commands in the console to get the following output.
+```sql
+ SHOW TABLES; 
+ ```
+| Tables\_in\_laboration1 |
+| :--- |
+| account |
+| moon\_mission |
+```sql
+DESCRIBE account;
+```
+| Field | Type | Null | Key | Default | Extra |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| user\_id | smallint | NO | PRI | null | auto\_increment |
+| name | varchar\(255\) | YES |  | null |  |
+| password | varchar\(255\) | YES |  | null |  |
+| first\_name | varchar\(255\) | YES |  | null |  |
+| last\_name | varchar\(255\) | YES |  | null |  |
+| ssn | varchar\(255\) | YES |  | null |  |
+
+```sql
+DESCRIBE moon_mission;
+```
+| Field | Type | Null | Key | Default | Extra |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| mission\_id | smallint | NO | PRI | null | auto\_increment |
+| spacecraft | varchar\(255\) | YES |  | null |  |
+| launch\_date | date | YES |  | null |  |
+| carrier\_rocket | varchar\(255\) | YES |  | null |  |
+| operator | varchar\(255\) | YES |  | null |  |
+| mission\_type | varchar\(255\) | YES |  | null |  |
+| outcome | varchar\(255\) | YES |  | null |  |
+
+
+
