@@ -46,6 +46,11 @@ DESCRIBE account;
 | last\_name | varchar\(255\) | YES |  | null |  |
 | ssn | varchar\(255\) | YES |  | null |  |
 
+**Primary Key of `account`:** `user_id`
+The `user_id` column is marked `PRI` in key column. 
+It is `NOT NULL` and uses auto_increment. MySQL assigns a unique number to 
+each new account automatically.
+
 ```sql
 DESCRIBE moon_mission;
 ```
@@ -58,6 +63,11 @@ DESCRIBE moon_mission;
 | operator | varchar\(255\) | YES |  | null |  |
 | mission\_type | varchar\(255\) | YES |  | null |  |
 | outcome | varchar\(255\) | YES |  | null |  |
+
+**Primary key of `moon_mission`:** `mission_id`
+The `mission_id` column is marked `PRI` in the key column. It is 
+`NOT NULL`and uses also auto_increment. MySQL assigns a unique number to each 
+new mission automatically.
 
 
 
