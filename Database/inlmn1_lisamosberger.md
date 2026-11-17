@@ -1,0 +1,27 @@
+# Part A: Enviroment and architecture
+### Task 1
+
+Start the MySQL container:
+```powershell
+docker run --name mysql-lab1 -p 3307:3306
+-e MYSQL_ROOT_PASSWORD=secret -e 'MYSQL_ROOT_HOST=%' -d mysql:26.10.0
+```
+
+I then copied the Laboration1.sql file into my new created Intellij Project.
+In Intellij I pressed on Databases, added Mysql and put in the username and password. 
+Additionalli I changed the port to 3307.
+
+#### Why port 3307?
+Mysql uses port 3306 by default. On my computer, a container that is used 
+for the lessons already used port 3306. Therefor I created this with port 3307 
+so I can run it in the same time as my Lesson container. 
+
+Mysql still listens on port 3306 and only the port outside of the container
+is different.
+
+#### Benefits: 
+- Both containers can run at the same time.
+- I do not have to stop or delete the lessons container, so its data is not affected
+- The lab is kept separate from the lesson material. In intellij I use port 3306 for 
+- the lessons and port 3307 for the lab
+
