@@ -69,5 +69,25 @@ The `mission_id` column is marked `PRI` in the key column. It is
 `NOT NULL`and uses also auto_increment. MySQL assigns a unique number to each 
 new mission automatically.
 
+### Task 3: Architecture 
+
+**Where they run** 
+- **MySQL Server:** in the Docker container `mysql-lab1`. Docker runs on my own computer
+(localhost), which means the server is on my own machine.
+- **Client:** Intellij, running on my computer.
+
+**How they communicate**  
+The client connects to the server over TCP (Transmission Control Protocol) using 
+the MySQL console. It sends the SQL statements and the server executes them and returns
+the result. Docker sends the connection from the host port to the container 
+port (`-p 3307:3306`)
+
+- Port **3307** is the port on my computer. This is the one the client connects to
+- Port **3306** is the port inside the container, where MySQL listens.
+
+**Port Used**  
+- Client connects to: `localhost`
+- MySQL listens on: `3306` (inside the container)
+
 
 
