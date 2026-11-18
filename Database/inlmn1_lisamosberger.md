@@ -106,11 +106,14 @@ crashes. SQL database guarantees this with ACID transactions.
 
 ### Task 16: Login sessions in a web shop with automatic expiry after 30 minutes
 **NoSQL**
-A session that ends after 30 minutes can be seen as only a key (session ID) with a value (user informations).
+A session that ends after 30 minutes can be seen as only a key (session ID) with a value (user information).
 NoSQL are fast and have a build in expiry Time, so sessions are deletet automatically after 30 minutes. 
 
 ### Task 17: A product catalog where different product types have completely different attributes
-
+**NoSQL** 
+For a catalog with different products with different attributes is a NoSQL a better fit, documents can have 
+different fields without a fixed table. SQL would lead to many empty (null) columns, that's why 
+NoSQL is the better choice here. 
 
 
 
