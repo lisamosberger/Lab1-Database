@@ -89,6 +89,25 @@ port (`-p 3307:3306`)
 - Client connects to: `localhost`
 - MySQL listens on: `3306` (inside the container)
 
+# Part C: SQL eller NoSQL? 
+**SQL** database like MySQL store data in tables with rows and columns.
+The structure is decided in advance and tables are 
+linked with primary and foreign keys that follow ACDI, 
+so transactions are reliable and the data stays consistent. 
+
+**NoSQL** database don't store data in tables. Instead the data can be stored as documents, key-value pairs
+or graphs. They don't need a fixed structure, which means each record can look different. They are often 
+faster and easier to spread over many servers, but they are usually less strict about keeping data consistent.
+
+### Task 15: Bank transfers between accounts
+**SQL** 
+A transfer needs to fully suceed or not happen at all, which means no money disappeared if something
+crashes. SQL database guarantees this with ACID transactions. 
+
+### 
+
+
+
 (write about how I changed by my own mission by select id to name, because 
 the thing that sets automaticall ID continues counting even if i remove something
 (Asked AI about that why it got the second time I added my mission again after deleting it 
