@@ -109,6 +109,9 @@ crashes. SQL database guarantees this with ACID transactions.
 A session that ends after 30 minutes can be seen as only a key (session ID) with a value (user informations).
 NoSQL are fast and have a build in expiry Time, so sessions are deletet automatically after 30 minutes. 
 
+### Task 17: A product catalog where different product types have completely different attributes
+
+
 
 
 
