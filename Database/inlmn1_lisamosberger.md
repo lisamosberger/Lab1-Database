@@ -1,4 +1,4 @@
-# Part A: Enviroment and architecture
+## Part A: Enviroment and architecture
 ### Task 1
 
 Start the MySQL container:
@@ -7,11 +7,11 @@ docker run --name mysql-lab1 -p 3307:3306
 -e MYSQL_ROOT_PASSWORD=secret -e 'MYSQL_ROOT_HOST=%' -d mysql:26.10.0
 ```
 
-I then copied the Laboration1.sql file into my new created Intellij Project.
-In Intellij I pressed on Databases, added Mysql and put in the username and password. 
-Additionalli I changed the port to 3307.
+I then copied the Laboration1.sql file into my new created IntelliJ Project.
+In IntelliJ, I pressed on Databases, added Mysql and put in the username and password. 
+Additionally I changed the port to 3307.
 
-#### Why port 3307?
+**Why port 3307?**  
 Mysql uses port 3306 by default. On my computer, a container that is used 
 for the lessons already used port 3306. Therefor I created this with port 3307 
 so I can run it in the same time as my Lesson container. 
@@ -19,13 +19,14 @@ so I can run it in the same time as my Lesson container.
 Mysql still listens on port 3306 and only the port outside of the container
 is different.
 
-#### Benefits: 
+**Benefits:**   
 - Both containers can run at the same time.
 - I do not have to stop or delete the lessons container, so its data is not affected
-- The lab is kept separate from the lesson material. In intellij I use port 3306 for 
+- The lab is kept separate from the lesson material. In IntelliJ I use port 3306 for 
 - the lessons and port 3307 for the lab
 
 ### Task 2: Show tables and describe
+
 I wrote these commands in the console to get the following output.
 ```sql
  SHOW TABLES; 
@@ -74,7 +75,7 @@ new mission automatically.
 **Where they run** 
 - **MySQL Server:** in the Docker container `mysql-lab1`. Docker runs on my own computer
 (localhost), which means the server is on my own machine.
-- **Client:** Intellij, running on my computer.
+- **Client:** IntelliJ, running on my computer.
 
 **How they communicate**  
 The client connects to the server over TCP (Transmission Control Protocol) using 
@@ -89,7 +90,7 @@ port (`-p 3307:3306`)
 - Client connects to: `localhost`
 - MySQL listens on: `3306` (inside the container)
 
-# Part C: SQL eller NoSQL? 
+## Part C: SQL or NoSQL? 
 
 **SQL** database like MySQL store data in tables with rows and columns.
 The structure is decided in advance and tables are 
@@ -101,36 +102,39 @@ or graphs. They don't need a fixed structure, which means each record can look d
 faster and easier to spread over many servers, but they are usually less strict about keeping data consistent.
 
 ### Task 15: Bank transfers between accounts
+
 **SQL** 
-A transfer needs to fully suceed or not happen at all, which means no money disappeared if something
+A transfer needs to fully succeed or not happen at all, which means no money disappeared if something
 crashes. SQL database guarantees this with ACID transactions. 
 
 ### Task 16: Login sessions in a web shop with automatic expiry after 30 minutes
+
 **NoSQL**
 A session that ends after 30 minutes can be seen as only a key (session ID) with a value (user information).
-NoSQL are fast and have a build in expiry Time, so sessions are deletet automatically after 30 minutes. 
+NoSQL are fast and have a build in expiry Time, so sessions are deleted automatically after 30 minutes. 
 
 ### Task 17: A product catalog where different product types have completely different attributes
+
 **NoSQL** 
 For a catalog with different products with different attributes is a NoSQL a better fit, documents can have 
 different fields without a fixed table. SQL would lead to many empty (null) columns, that's why 
 NoSQL is the better choice here. 
 
 
-# Part D: Reflection (VG)
+## Part D: Reflection (VG)
 ### Task 18: Which questions did you get help with from AI? 
 
-While working on the first lab I used an AI for in total four questions. Two were about the enviroment
-(a Docker port error) and the database behaviour (`AUTO_INCREMENT`) and the other two were about SQL
+While working on the first lab I used an AI for in total four questions. Two were about the environment
+(a Docker port error) and the database behavior (`AUTO_INCREMENT`) and the other two were about SQL
 (removing extra spaces and writing an `INSERT`).
 The AI gave useful answers everytime, but because it didn't know the exact tables and tasks I needed to fix some 
-small issues in the insert part. 
+small issues in the insert part. (Behind each conversation I added how I used it or how I fixed it)
 
-**My promt** 
+**My prompt** 
 > ccf54d02cbd9dcfd90e7d6faf4eae4ea7d8f824b8c7a069d9dfe0ee4b298970f
 docker: Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint mysql-lab1 (b9f9f2cf3b740ba9df0ac9178cb41e9579aadd6542b746016c6b36d79a957693): Bind for 0.0.0.0:3306 failed: port is already allocated   
 > 
-> I wanted to run a new conatiner and got this error message, I understand that it means that the port is already used. But in what way can I fix this?
+> I wanted to run a new container and got this error message, I understand that it means that the port is already used. But in what way can I fix this?
 
 **AI answer**
 > You have two options: free up port 3306 or map the new container to a different host port.
@@ -176,7 +180,7 @@ As described in Task 1, I used `-p 3307:3306` instead of `-p 3306:3306`. Port 33
 to port 3306 inside the container, so the two containers don't conflict.
 
 **The Second question I asked**  
-**My Promt**
+**My prompt**
 > How can I remove extra spaces when using select * from moon_mission where mission_type = 'something';
 
 **AI answer**
@@ -254,8 +258,8 @@ so it fits to the others. When I wrote insert and pressed enter the AI of Intell
 automatically added also `mission_id` to insert. But because it is automatically assigned to the missions 
 I removed it.
 
-**Last question I ased**  
-**My promt**
+**Last question I asked**  
+**My prompt**
 > When I am adding a new mission to that table (each mission gets a ID number automatically assigned) and deleting it afterward, when adding a new mission again the number is instead of 19, 20
 why is that so?
 
@@ -289,8 +293,9 @@ changed to 20 instead of 19. I then asked AI why this happend, and this answer w
 fully understand the `AUTO_INCREMENT`. 
 
 ### Task 19: Why is the account table a bad design for a password
+
 The password in the `account` table are saved as plain text, which means it is open for anyone who can see the 
 database to read every password and log in as any user. Several users with similar also share the exactly same password (for example the three Max(Maximillian and Maximus)),
 which means that if anyone finds out one password, knows it for all of those accounts.
-Aditionally, the `ssn` is stored in the same table so a single leak exposes both the login details and personal data
+Additionally, the `ssn` is stored in the same table so a single leak exposes both the login details and personal data
 
