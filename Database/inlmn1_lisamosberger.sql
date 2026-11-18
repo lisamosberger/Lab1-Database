@@ -24,3 +24,68 @@ order by spacecraft;
  After I got the first list I added a space after Luna (Luna %) to get the table without Lunar.
  So I went from "Luna%" to "Luna %".
  */
+
+-- Task 8: Get three most recently launched missions
+select * from moon_mission
+order by launch_date
+like 3;
+
+-- Task 9: Get all accounts with the last name Åström or Fransson, sorted by first name
+select * from account
+where last_name = 'Åström' or last_name = 'Fransson'
+order by first_name;
+
+-- Task 10: Get all missions where operator = 'NASA'
+select * from moon_mission
+where operator = 'NASA';
+/*
+ I only get 0 rows, because if we take a look on the table moon_missions
+ we see that there is no NASA to find. Every NASA has spaces between some letters (NA  SA,NAS A)
+ so it finds nothing.
+ */
+
+-- Task 11: get all missions where mission_type = 'Impactor'
+select * from moon_mission
+where Trim(mission_type) = 'Impactor';
+-- added "Trim()" after the first search
+/*
+ I only got one row, but in the table there are two Impactor. But one of them
+ has a space infront of it, which causes this problem. With the help of trim I could find
+ also the Impactor with the space infront.
+ */
+
+-- Task 12: Work with your own mission
+-- Task 12a: Insert a new mission (launched before the year 2000) and show it
+insert into moon_mission (spacecraft, launch_date, carrier_rocket, operator, mission_type, outcome)
+values ('Chandrayaan-3', '1990-07-14',
+        'LVM3', 'ISRO',
+        'Lander and rover', 'Successful');
+-- It got the mission_id = 19
+select * from moon_mission
+where spacecraft = 'Chandrayaan-3';
+
+-- Task 12b: Change the outcome of the mission with update
+update moon_mission set outcome = 'Launch failure'
+where spacecraft = 'Chandrayaan-3';
+
+select * from moon_mission
+where spacecraft = 'Chandrayaan-3';
+
+-- Task 12c: Delete the mission with delete, using where on mission_id
+delete from moon_mission
+where spacecraft = 'Chandrayaan-3';
+
+select * from moon_mission
+where spacecraft = 'Chandrayaan-3';
+
+-- Task 13: Change the outcome of Chandrayaan-2 to Sucessfull
+update moon_mission set outcome = 'Sucessfull'
+where spacecraft = 'Chandrayaan-2';
+
+select *
+from moon_mission where spacecraft = 'Chandrayaan-2';
+-- Task 14: Delete all mission launched in 2010 or later
+delete from moon_mission
+where launch_date >= '2010-01-01';
+
+

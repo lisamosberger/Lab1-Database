@@ -89,5 +89,8 @@ port (`-p 3307:3306`)
 - Client connects to: `localhost`
 - MySQL listens on: `3306` (inside the container)
 
-
+(write about how I changed by my own mission by select id to name, because 
+the thing that sets automaticall ID continues counting even if i remove something
+(Asked AI about that why it got the second time I added my mission again after deleting it 
+a new number and not the same as before))
 
