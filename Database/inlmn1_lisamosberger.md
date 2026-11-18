@@ -104,7 +104,12 @@ faster and easier to spread over many servers, but they are usually less strict 
 A transfer needs to fully suceed or not happen at all, which means no money disappeared if something
 crashes. SQL database guarantees this with ACID transactions. 
 
-### 
+### Task 16: Login sessions in a web shop with automatic expiry after 30 minutes
+**NoSQL**
+A session that ends after 30 minutes can be seen as only a key (session ID) with a value (user informations).
+NoSQL are fast and have a build in expiry Time, so sessions are deletet automatically after 30 minutes. 
+
+
 
 
 
